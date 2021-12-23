@@ -6,28 +6,37 @@
 </head>
 <body>
 <script>
-function myFunction() {
-	
-}
+/* function funcAdd() {
+	var name = document.getElementById("name");
+
+	name.addEventListener("keyup", function (event) {
+	  if (name.validity. ) {
+	    email.setCustomValidity("I expect an e-mail, darling!");
+	  } else {
+	    email.setCustomValidity("");
+	  }
+	});	
+} */
 </script>
 
 <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
     <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:required="required"></span><br/>
+    <input type="text" th:field="*{name}" id="name" maxlength="50" required>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
     <label for="phone">No. Hp</label>
-    <input type="text" th:field="*{phone}" id="phone" placeholder="No. Hp">
-    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:required="required"></span><br/>
+    <input type="number" th:field="*{phone}" id="phone" maxlength="10" required>
+    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span><br/>
     <label for="email">Email</label>
-    <input type="text" th:field="*{email}" id="email" placeholder="Email">
-    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:required="required"></span><br/>
+    <input type="email" th:field="*{email}" id="email" placeholder="Email" required>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br/>
     <label for="address">Alamat</label>
-    <input type="text" th:field="*{address}" id="address"><button onclick="myFunction()">+</button>
-    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" th:required="required"></span><br/>
-    <p><input type="text" th:field="*{address1}" id="address1" class="addr"><button onclick="myFunction()">-</button>
-    <span th:if="${#fields.hasErrors('address2')}" th:errors="*{address2}" th:required="required"></span><br/>
+    <input type="text" th:field="*{address}" id="address" required><!-- <button onclick="funcAdd()">+</button>  -->
+    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span><br/>
+    <p><input type="text" th:field="*{address1}" id="address1" class="addr"><!-- <button onclick="funcAdd1()">-</button> -->
+    <span th:if="${#fields.hasErrors('address1')}" th:errors="*{address1}"></span><br/>
     <input type="text" th:field="*{address2}" id="address2" class="addr">
-     <span th:if="${#fields.hasErrors('address2')}" th:errors="*{address2}" th:required="required"></span><button onclick="myFunction()">-</button><br/>
+     <span th:if="${#fields.hasErrors('address2')}" th:errors="*{address2}"></span><!-- <button onclick="funcAdd2()">-</button> --><br/>
+    
     <input type="submit" value="Create">   
 </form>
 </body>
